@@ -16,10 +16,6 @@ public class Address {
 	 * @param telephoneNumber
 	 */
 	public Address(String contactName, String city, String addressLine1, String addressLine2, String postalCode,
-			String telephoneNumber) {
-		super();
-		this.contactName = contactName;
-		this.city = city;
 		this.addressLine1 = addressLine1;
 		this.addressLine2 = addressLine2;
 		this.postalCode = postalCode;
