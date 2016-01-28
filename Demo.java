@@ -5,7 +5,8 @@ import components.HardDrive;
 import components.Monitor;
 import components.MotherBoard;
 import components.RAM;
-import exceptions.NotEnoughInStockExceptio;
+
+import exceptions.NotEnoughInStockException;
 import factories.ClientFactory;
 import shop.DataBase;
 
@@ -64,13 +65,13 @@ public class Demo {
 		dataBase.getClients().add(ClientFactory.createClient("Gosho", "A123a", "itt@itt.com"));
 		try {
 			dataBase.getClients().get(0).getCart().addProduct(gpu2, 1);
-		} catch (NotEnoughInStockExceptio e) {
+		} catch (NotEnoughInStockException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		try {
 			dataBase.getClients().get(0).getCart().addProduct(monitor2, 1);
-		} catch (NotEnoughInStockExceptio e) {
+		} catch (NotEnoughInStockException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

@@ -3,7 +3,8 @@ package user;
 import java.util.Scanner;
 
 import components.Product;
-import exceptions.NotEnoughInStockExceptio;
+
+import exceptions.NotEnoughInStockException;
 
 public class Client {
 	
@@ -55,7 +56,7 @@ public class Client {
 	void addProductToCart(Product p, int amount){
 		try {
 			cart.addProduct(p, amount);
-		} catch (NotEnoughInStockExceptio e) {
+		} catch (NotEnoughInStockException e) {
 			System.out.println(e.getMessage());
 		}
 	}

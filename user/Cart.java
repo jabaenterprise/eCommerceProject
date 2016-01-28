@@ -9,16 +9,17 @@ import components.Monitor;
 import components.MotherBoard;
 import components.Product;
 import components.RAM;
-import exceptions.NotEnoughInStockExceptio;
+
+import exceptions.NotEnoughInStockException;
 
 public class Cart {
 
 	private ArrayList<Product> cart  = new ArrayList<Product>();
 	
 	
-	public void addProduct(Product p, int amount) throws NotEnoughInStockExceptio{
+	public void addProduct(Product p, int amount) throws NotEnoughInStockException{
 		if (amount<=0){
-			throw new NotEnoughInStockExceptio("You are trying to add O or less Products");
+			throw new NotEnoughInStockException("You are trying to add O or less Products");
 		}
 		cart.add(p);
 		try {

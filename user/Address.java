@@ -15,7 +15,9 @@ public class Address {
 	 * @param postalCode
 	 * @param telephoneNumber
 	 */
-	public Address(String contactName, String city, String addressLine1, String addressLine2, String postalCode,
+	public Address(String contactName, String city, String addressLine1, String addressLine2, String postalCode, String telephoneNumber) {
+		
+		this.contactName = contactName;
 		this.addressLine1 = addressLine1;
 		this.addressLine2 = addressLine2;
 		this.postalCode = postalCode;

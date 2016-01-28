@@ -9,6 +9,10 @@ public class DataBase {
 	private static Inventory inventory = new Inventory();
 	protected static ArrayList<Client> clients  = new ArrayList<Client>();
 	
+	
+	
+	
+	
 	public Inventory getInventory() {
 		return inventory;
 	}

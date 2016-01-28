@@ -3,6 +3,8 @@ package components;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List; 
 
 public class Inventory {
@@ -73,29 +75,8 @@ public class Inventory {
 		}
 		
 		public void printByComponent(String component) throws Exception{
-			int select=-1;
-			switch(component){
-			case "CPU":
-				select = CPU;
-				break;
-			case "GPU":
-				select = GPU;
-				break;
-			case "Hard Drives":
-				select = HARDDRIVE;
-				break;
-			case "Monitor":
-				select = MONITOR;
-				break;
-			case "MotherBoard" :
-				select = MOTHERBOARD;
-				break;
-			case "RAM":
-				select = RAM;
-				break;
-				default:
-					select = -1;
-			}
+			int select= Inventory.chooseComponent(component);
+			
 			if (select!=-1){
 				for (int i = 0;i<products.get(select).size();i++){
 					products.get(select).get(i).printDetails();
@@ -130,6 +111,97 @@ public class Inventory {
 			return select;
 		}
 		
+		//This returns the int code of the cathegory. Just made it in order not to repeat code :)
+		public static int chooseComponent(String component) {
+			int select=-1;
+			switch(component){
+			case "CPU":
+				select = CPU;
+				break;
+			case "GPU":
+				select = GPU;
+				break;
+			case "Hard Drives":
+				select = HARDDRIVE;
+				break;
+			case "Monitor":
+				select = MONITOR;
+				break;
+			case "MotherBoard" :
+				select = MOTHERBOARD;
+				break;
+			case "RAM":
+				select = RAM;
+				break;
+				default:
+					select = -1;
+			}
+			
+			return select;
+		}
 		
+		//When te client chooses a cathegory he/she can sort it by price in ascending and...
+		public void sortProductTypeByPriceAscending(String component) throws Exception {
+			int select = Inventory.chooseComponent(component);
+			if (select!=-1){
+				
+				Collections.sort(this.products.get(select), new Comparator<Product>() {
 
+					@Override
+					public int compare(Product p1, Product p2) {
+
+						if (p1.getPrice() > p2.getPrice()) {
+							return 1;
+						} else {
+							if (p1.getPrice() < p2.getPrice()) {
+								return -1;
+							}
+						}
+						
+						return 0;
+					}
+					
+				});
+				
+				printByComponent(component);
+			}
+			else
+			{
+				System.out.println("Input not recognised");
+			}
+			
+		}
+		//... in descending order
+		public void sortProductTypeByPriceDescending(String component) throws Exception {
+			int select = Inventory.chooseComponent(component);
+			if (select!=-1){
+				
+				Collections.sort(this.products.get(select), new Comparator<Product>() {
+
+					@Override
+					public int compare(Product p1, Product p2) {
+
+						if (p1.getPrice() > p2.getPrice()) {
+							return -1;
+						} else {
+							if (p1.getPrice() < p2.getPrice()) {
+								return 1;
+							}
+						}
+						
+						return 0;
+					}
+					
+				});
+				printByComponent(component);
+			}
+			else
+			{
+				System.out.println("Input not recognised");
+			}
+			
+		}
+
+		
+		
 }
