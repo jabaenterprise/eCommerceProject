@@ -6,8 +6,8 @@ public class CPU extends Product {
 	private double clockSpeed;
 	private String socket;
 	
-	public CPU(String model, String maker, double price, String info,int numberOfCores, double clockSpeed, String socket, int quantity) {
-		super(model, maker, price, info, quantity);
+	public CPU(String model, String maker, double price, String info,int numberOfCores, double clockSpeed, String socket) {
+		super(model, maker, price, info);
 		super.setAvailable(true);
 		this.numberOfCores = numberOfCores;
 		this.clockSpeed = clockSpeed;

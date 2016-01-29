@@ -10,8 +10,8 @@ public class MotherBoard extends Product{
 	 * @param price
 	 * @param info
 	 */
-	public MotherBoard(String model, String maker, double price, String info, String chipset, String ramSlots, String socketType, int quantity) {
-		super(model, maker, price, info, quantity);
+	public MotherBoard(String model, String maker, double price, String info, String chipset, String ramSlots, String socketType) {
+		super(model, maker, price, info);
 		this.chipset = chipset;
 		this.ramSlots = ramSlots;
 		this .socketType = socketType;
@@ -20,7 +20,6 @@ public class MotherBoard extends Product{
 	}
 	@Override
 	public void printDetails() {
-		System.out.println("***Motheroard***");
 		System.out.println("Chipset: "+chipset);
 		System.out.println("Ram Slots: " + ramSlots);
 		System.out.println("Socket Type: " + socketType);

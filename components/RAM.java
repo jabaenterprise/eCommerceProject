@@ -11,8 +11,8 @@ public class RAM extends Product{
 	 * @param price
 	 * @param info
 	 */
-	public RAM(String model, String maker, double price, String info, String type,int size, int quantity) {
-		super(model, maker, price, info, quantity);
+	public RAM(String model, String maker, double price, String info, String type,int size) {
+		super(model, maker, price, info);
 		this.size = size;
 		this.type = type;
 		super.setAvailable(true);
