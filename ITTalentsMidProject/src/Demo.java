@@ -107,9 +107,7 @@ public class Demo {
 		dataBase.getAdmin().removeProductById(dataBase.getInventory(), 6, 3);
 		dataBase.getInventory().printAllContent();
 
-		System.out.println("some text");
-		System.out.println("some text");
-		System.out.println("some text");
+	
 		
 		
 	}
