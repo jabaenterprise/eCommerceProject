@@ -64,9 +64,9 @@ public class Demo {
 	System.out.println("----------------------------");
 		
 		
-		dataBase.getClients().add(ClientFactory.createClient("Gosho", "A123a", "itt@itt.com"));
-		dataBase.getClients().add(ClientFactory.createClient("Gosho", "A123a", "itt@itt.com"));
-		dataBase.getClients().add(ClientFactory.createClient("Gosho1", "A123a", "itt@itt!1.com"));
+		
+	
+		
 		
 		try {
 			dataBase.getClients().get(0).getCart().addProduct(gpu2, 1);
@@ -106,8 +106,9 @@ public class Demo {
 		
 		dataBase.getAdmin().removeProductById(dataBase.getInventory(), 6, 3);
 		dataBase.getInventory().printAllContent();
-		dataBase.getClients().get(0).buyProducts();
-		System.out.println();
+		System.out.println("some text");
+		System.out.println("some text");
+		System.out.println("some text");
 	}
 
 }
