@@ -1,3 +1,5 @@
+import java.io.IOException;
+
 import components.CPU;
 import components.Case;
 import components.GPU;
@@ -8,10 +10,11 @@ import components.RAM;
 import exceptions.NotEnoughInStockExceptio;
 import factories.ClientFactory;
 import shop.DataBase;
+import user.Address;
 
 public class Demo {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws NotEnoughInStockExceptio {
 		DataBase dataBase = new DataBase();
 		dataBase.getInventory().generateArray();
 		
@@ -34,34 +37,35 @@ public class Demo {
 		RAM ram3 = new RAM("ValueRAM ", "Kingston ", 30, "Single channel 2133MHz", "DDR4", 4);
 		MotherBoard mB1 = new MotherBoard("N3050M-E", "Asus " , 90, "ASUS 5X Protection ASUS Exclusive Features ASUS EZ DIY ASUS Q-Design", "Intel", "2", "1170");
 		MotherBoard mB2 = new MotherBoard(" Z97X-Gaming G1", "Gigabyte  " , 400, "2 x 128 MB Flash PnP DMI 2.7 WfM 2.0 SM BIOS 2.7 ACPI 5.0", "Intel", "2", "1150");
-		dataBase.getInventory().addProd(gpu2, 6);
-		dataBase.getInventory().addProd(gpu1, 6);
-		dataBase.getInventory().addProd(cpu3, 12);
-		dataBase.getInventory().addProd(cpu2, 9);
-		dataBase.getInventory().addProd(cpu1, 14);
-		dataBase.getInventory().addProd(mB1, 21);
-		dataBase.getInventory().addProd(mB1, 31);
-		dataBase.getInventory().addProd(ram3, 12);
-		dataBase.getInventory().addProd(ram2, 32);
-		dataBase.getInventory().addProd(ram1, 14);
-		dataBase.getInventory().addProd(monitor3, 54);
-		dataBase.getInventory().addProd(monitor2, 12);
-		dataBase.getInventory().addProd(monitor1, 22);
+		dataBase.addComponent(gpu2, 6);
+		dataBase.addComponent(gpu1, 6);
+		dataBase.addComponent(cpu3, 12);
+		dataBase.addComponent(cpu2, 9);
+		dataBase.addComponent(cpu1, 14);
+		dataBase.addComponent(mB1, 21);
+		dataBase.addComponent(mB1, 31);
+		dataBase.addComponent(ram3, 12);
+		dataBase.addComponent(ram2, 32);
+		dataBase.addComponent(ram1, 14);
+		dataBase.addComponent(monitor3, 54);
+		dataBase.addComponent(monitor2, 12);
+		dataBase.addComponent(monitor1, 22);
 		
-		dataBase.getInventory().addProd(hD3, 13);
-		dataBase.getInventory().addProd(hD3, 14);
-		dataBase.getInventory().addProd(hD2, 15);
-		dataBase.getInventory().addProd(hD1, 21);
-		dataBase.getInventory().addProd(case3, 22);
-		dataBase.getInventory().addProd(case2, 31);
-		dataBase.getInventory().addProd(case1, 22);
+		dataBase.addComponent(hD3, 13);
+		dataBase.addComponent(hD3, 14);
+		dataBase.addComponent(hD2, 15);
+		dataBase.addComponent(hD1, 21);
+		dataBase.addComponent(case3, 22);
+		dataBase.addComponent(case2, 31);
+		dataBase.addComponent(case1, 22);
+		dataBase.addComponent(7);
 	
-		dataBase.getInventory().printAllContent();
+		dataBase.showAllComponents();
 	System.out.println("----------------------------");
 		
 		
-		dataBase.getClients().add(ClientFactory.createClient("Gosho", "A123a", "itt@itt.com"));
-		dataBase.getClients().add(ClientFactory.createClient("Gosho", "A123a", "itt@itt.com"));
+		dataBase.registerClient("Gosho", "A123a", "itt@itt.com");
+		dataBase.registerClient("Gosho", "A123a", "itt@itt.com");
 		try {
 			dataBase.getClients().get(0).getCart().addProduct(gpu2, 1);
 		} catch (NotEnoughInStockExceptio e) {
@@ -69,15 +73,17 @@ public class Demo {
 			e.printStackTrace();
 		}
 		try {
-			dataBase.getClients().get(0).getCart().addProduct(monitor2, 1);
+			dataBase.getClients().get(0).getCart().addProduct(monitor2, 0);
 		} catch (NotEnoughInStockExceptio e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			
 		}
 		System.out.println("----------------------------");
 		dataBase.getClients().get(0).getCart().printCart();
 		System.out.println("----------------------------");
-		dataBase.getInventory().printAllContent();
+//		dataBase.printInventoryContent();
+		dataBase.getClients().get(0).buyProducts();
+		dataBase.getClients().get(0).setAddress(new Address("georgi", "Sofia","Address 1","address 2", "1000", "288996258"));
+		dataBase.getClients().get(0).buyProducts();
 	}
 
 }

@@ -15,6 +15,7 @@ public class Address {
 	 * @param postalCode
 	 * @param telephoneNumber
 	 */
+	public Address(){}
 	public Address(String contactName, String city, String addressLine1, String addressLine2, String postalCode,String telephoneNumber) {
 		if(contactName!=null&&city!=null&&addressLine1!=null&&addressLine2!=null&&postalCode!=null&&telephoneNumber!=null){
 			this.contactName = contactName;
@@ -58,7 +59,7 @@ public class Address {
 		if(addressLine1!=null)
 		this.addressLine1 = addressLine1;
 		else
-			System.out.println("You must enter Address Linea1!");
+			System.out.println("You must enter Address Line 1!");
 	}
 	public String getAddressLine2() {
 		return addressLine2;

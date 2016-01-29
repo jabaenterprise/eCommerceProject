@@ -6,12 +6,13 @@ import components.Product;
 import exceptions.NotEnoughInStockExceptio;
 
 public class Client {
-	
+	Scanner sc = new Scanner(System.in);
+	private static final double SHIPPING_FEE = 5.95;
 	private String eMail;
 	private String password;
 	private Address address;
 	private String name;
-//	private boolean isLoggedIn = false;
+	private boolean isLoggedIn = false;
 	Cart cart = new Cart();
 	/**
 	 * @param eMail
@@ -23,6 +24,15 @@ public class Client {
 		this.password = password;
 		this.name = name;
 	}
+	
+	public boolean isLoggedIn() {
+		return isLoggedIn;
+	}
+
+	public void setLoggedIn(boolean isLoggedIn) {
+		this.isLoggedIn = isLoggedIn;
+	}
+
 	public String geteMail() {
 		return eMail;
 	}
@@ -64,12 +74,31 @@ public class Client {
 		cart.removeProduct(p, amount);
 	}
 	
-	void buyProducts(){
+	 public void buyProducts(){
 	//some sort of confirmation for correct address or if the user would like to change the address 
 			if(address!=null)
-				System.out.println("The amount you need to pay is: "+cart.calculateCost());
+				System.out.println("The amount you need to pay with shipping fee is: "+(cart.calculateCost()+SHIPPING_FEE));
 			else{
+				System.out.println("Enter contact name");
+				String contactName = sc.nextLine();
+				address.setContactName(contactName);
 				System.out.println("you need to enter an address");
+				address = new Address();
+				System.out.println("You must enter city!");
+				String city=sc.nextLine();
+				address.setCity(city);
+				System.out.println("You must enter Address Line 1!");
+				String addressLine1 = sc.nextLine();
+				address.setAddressLine1(addressLine1);
+				System.out.println("You must enter Address Line 2!");
+				String addressLine2 = sc.nextLine();
+				address.setAddressLine1(addressLine2);
+				System.out.println("You must enter Postal Code!");
+				String postalCode = sc.nextLine();
+				address.setPostalCode(postalCode);
+				System.out.println("You must enter Telephone Number!");
+				String telephoneNumber = sc.nextLine();
+				address.setTelephoneNumber(telephoneNumber);
 			}
 		}	
 	
