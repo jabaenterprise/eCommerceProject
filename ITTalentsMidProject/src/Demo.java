@@ -25,7 +25,7 @@ public class Demo {
 		CPU cpu1 = new CPU("CORE i7", "intel", 450, "very fast and reliable", 8, 2.4, "some kind of socket", 2);
 		CPU cpu2 = new CPU("CORE i5", "intel", 300, "fast and reliable", 6, 2, "some other kind of socket", 3);
 		CPU cpu3 = new CPU("FX", "AMD ", 455, "very fast and reliable", 8, 2.8, "some AMD kind of socket", 4);
-		GPU gpu1 = new GPU("GTX 980 TI", "NVIDIA", 560, "Ti. The most powerful two letters in the world of GPUs. When paired with our flagship gaming GPU – GeForce GTX 980 – it enables new levels of performance and capabilities. Accelerated by the groundbreaking NVIDIA Maxwell™ architecture, GTX 980 Ti delivers an unbeatable 4K and virtual reality experience.", 6, "5120x3200", "Dual Link DVI-I, HDMI 2.0, 3x DisplayPort 1.2", 5);
+		GPU gpu1 = new GPU("GTX 980 TI", "NVIDIA", 560, "Ti. The most powerful two letters in the world of GPUs. When paired with our flagship gaming GPU â€“ GeForce GTX 980 â€“ it enables new levels of performance and capabilities. Accelerated by the groundbreaking NVIDIA Maxwellâ„¢ architecture, GTX 980 Ti delivers an unbeatable 4K and virtual reality experience.", 6, "5120x3200", "Dual Link DVI-I, HDMI 2.0, 3x DisplayPort 1.2", 5);
 		GPU gpu2 = new GPU("R9 390X 8G D5", "ATi", 620, "The SAPPHIRE R9 390X Series is based on the latest Graphics Core Next architecture from AMD and is designed to provide enthusiast level graphics performance.", 5, "4096X2160", "1 x DVI-D 1 x HDMI 3 x DisplayPort", 6);
 		HardDrive hD1 = new HardDrive("Barracuda ","Seagate" , 75, "16MB, SATA3", "HDD", 4, 500, 6);
 		HardDrive hD2 = new HardDrive("535 Series ","Intel " , 150, "SATA3", "SSD", 4, 240, 7);
@@ -107,6 +107,9 @@ public class Demo {
 		dataBase.getAdmin().removeProductById(dataBase.getInventory(), 6, 3);
 		dataBase.getInventory().printAllContent();
 
+		System.out.println("some text");
+		System.out.println("some text");
+		System.out.println("some text");
 		
 		
 	}
