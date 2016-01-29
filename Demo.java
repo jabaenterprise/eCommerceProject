@@ -5,10 +5,12 @@ import components.HardDrive;
 import components.Monitor;
 import components.MotherBoard;
 import components.RAM;
-
+import exceptions.InvalidPriceException;
 import exceptions.NotEnoughInStockException;
+import factories.AdminFactory;
 import factories.ClientFactory;
 import shop.DataBase;
+import user.Client;
 
 public class Demo {
 
@@ -41,7 +43,7 @@ public class Demo {
 		dataBase.getInventory().addProd(cpu2, 9);
 		dataBase.getInventory().addProd(cpu1, 14);
 		dataBase.getInventory().addProd(mB1, 21);
-		dataBase.getInventory().addProd(mB1, 31);
+		dataBase.getInventory().addProd(mB2, 31);
 		dataBase.getInventory().addProd(ram3, 12);
 		dataBase.getInventory().addProd(ram2, 32);
 		dataBase.getInventory().addProd(ram1, 14);
@@ -63,6 +65,7 @@ public class Demo {
 		
 		dataBase.getClients().add(ClientFactory.createClient("Gosho", "A123a", "itt@itt.com"));
 		dataBase.getClients().add(ClientFactory.createClient("Gosho", "A123a", "itt@itt.com"));
+		dataBase.getClients().add(ClientFactory.createClient("Gosho1", "A123a", "itt@itt1.com"));
 		try {
 			dataBase.getClients().get(0).getCart().addProduct(gpu2, 1);
 		} catch (NotEnoughInStockException e) {
@@ -78,6 +81,28 @@ public class Demo {
 		System.out.println("----------------------------");
 		dataBase.getClients().get(0).getCart().printCart();
 		System.out.println("----------------------------");
+		dataBase.getInventory().printAllContent();
+		//Admin testing
+		dataBase.setAdmin(AdminFactory.createAdmin("admin@itt.com", "B123Ds"));
+		dataBase.getAdmin().removeUser(dataBase.getClients(), new Client("itt@itt1.com", "A123a", "Gosho1"));
+		dataBase.getAdmin().addProduct(dataBase.getInventory(), new RAM("AX23792002","Axiom", 50, "Axiom has designed and engineered this module to set that standard.", "DDR3",4));
+		dataBase.getAdmin().changeProductQuantity(dataBase.getInventory(), new RAM("AX23792002","Axiom", 50, "Axiom has designed and engineered this module to set that standard.", "DDR3",4), 10);
+		
+		dataBase.getInventory().printAllContent();
+		
+		System.out.println("----------------------");
+		
+		try {
+			dataBase.getAdmin().changeProductPrice(dataBase.getInventory(), 6, 3, 126);
+		} catch (IllegalArgumentException e) {
+			e.printStackTrace();
+		} catch (InvalidPriceException e) {
+			e.printStackTrace();
+		}
+
+		dataBase.getInventory().printAllContent();
+		
+		dataBase.getAdmin().removeProductById(dataBase.getInventory(), 6, 3);
 		dataBase.getInventory().printAllContent();
 	}
 

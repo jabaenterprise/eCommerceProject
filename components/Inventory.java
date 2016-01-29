@@ -58,6 +58,7 @@ public class Inventory {
 			
 			
 		}
+		
 		public void removeProduct(Product p, int amount) {
 			int select = findProductType(p);
 			for(int i = 0; i<products.get(select).size();i++){
@@ -89,6 +90,7 @@ public class Inventory {
 			
 			
 		}
+		
 		public void printAllContent() {
 			for(int i = 0;i<products.size();i++){
 				for (int j = 0; j<products.get(i).size();j++){
@@ -200,6 +202,18 @@ public class Inventory {
 				System.out.println("Input not recognised");
 			}
 			
+		}
+
+		
+		
+		public List<Product> getProductList(int type){
+			if(type>=0&&type<=6)
+				return products.get(type);
+			return null;
+		}
+		
+		public List<Product> getProductList(Product p){
+			return products.get(findProductType(p));
 		}
 
 		
