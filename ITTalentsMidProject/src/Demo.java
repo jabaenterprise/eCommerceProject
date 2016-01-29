@@ -108,7 +108,6 @@ public class Demo {
 		dataBase.getInventory().printAllContent();
 
 		
-		
 	}
 
 }
