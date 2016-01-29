@@ -225,4 +225,15 @@ public class Inventory {
 			
 		}
 		
+		
+		public List<Product> getProductList(int type){
+			if(type>=0&&type<=6)
+				return products.get(type);
+			return null;
+		}
+		
+		public List<Product> getProductList(Product p){
+			return products.get(findProductType(p));
+		}
+		
 }

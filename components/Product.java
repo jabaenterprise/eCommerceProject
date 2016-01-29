@@ -95,6 +95,7 @@ public  class Product {
 	public void setQuantity(int quantity) throws IOException {
 		if(quantity>0){
 			this.quantity = quantity;
+			isAvailable = true;
 			return;
 		}
 			
