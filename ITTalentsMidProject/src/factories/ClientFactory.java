@@ -18,7 +18,7 @@ public class ClientFactory extends DataBase{
 		for(int i = 0; i < clients.size();i++){
 			if(email.equals(clients.get(i).geteMail())){
 				System.out.println("this client is already in the system ");
-				return null;
+				return clients.get(i);
 			}
 		}
 		if(password.length()>4&&password.matches(".*\\d+.*")&&password.matches(".*[A-Z]+.*")&&password.matches(".*[a-z]+.*")&&name.length()>0){
@@ -26,7 +26,7 @@ public class ClientFactory extends DataBase{
 			
 		}
 		else		
-		return null;
+		return null;		//we must figure out how what to return because this null leads to null pointer exception 
 		
 	}
 

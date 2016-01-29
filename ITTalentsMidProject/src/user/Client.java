@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import components.Product;
 import exceptions.NotEnoughInStockExceptio;
+import shop.DataBase;
 
 public class Client {
 	Scanner sc = new Scanner(System.in);
@@ -76,14 +77,22 @@ public class Client {
 	
 	 public void buyProducts(){
 	//some sort of confirmation for correct address or if the user would like to change the address 
-			if(address!=null)
-				System.out.println("The amount you need to pay with shipping fee is: "+(cart.calculateCost()+SHIPPING_FEE));
-			else{
+		 if(!isLoggedIn){
+			System.out.println("You must log in first");
+			System.out.println("email");
+			String email2 = sc.nextLine();
+			System.out.println("password");
+			String password2 = sc.nextLine();
+			DataBase.clientLogIn(email2, password2);
+			
+		 }
+		 System.out.println();
+			if(address==null){
+				
+				address = new Address();
 				System.out.println("Enter contact name");
 				String contactName = sc.nextLine();
 				address.setContactName(contactName);
-				System.out.println("you need to enter an address");
-				address = new Address();
 				System.out.println("You must enter city!");
 				String city=sc.nextLine();
 				address.setCity(city);
@@ -100,8 +109,12 @@ public class Client {
 				String telephoneNumber = sc.nextLine();
 				address.setTelephoneNumber(telephoneNumber);
 			}
+			System.out.println("The amount you need to pay with shipping fee is: "+(cart.calculateCost()+SHIPPING_FEE));
+			
 		}	
-	
+	 	
+	 
+	 
 	
 	
 	
