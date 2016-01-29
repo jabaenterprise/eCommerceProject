@@ -10,8 +10,8 @@ public class GPU extends Product{
 	 * @param price
 	 * @param info
 	 */
-	public GPU(String model, String maker, double price, String info, int memorySize,String maxResolution, String outputInterface) {
-		super(model, maker, price, info);
+	public GPU(String model, String maker, double price, String info, int memorySize,String maxResolution, String outputInterface, int quantity) {
+		super(model, maker, price, info, quantity);
 		this.maxResolution = maxResolution;
 		this.memorySize = memorySize;
 		this.outputInterface = outputInterface;

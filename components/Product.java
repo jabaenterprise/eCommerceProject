@@ -2,6 +2,9 @@ package components;
 
 import java.io.IOException;
 
+import exceptions.InvalidPriceException;
+import exceptions.InvalidQuantityValueException;
+
 public  class Product {
 	private String model;
 	private String maker;
@@ -16,13 +19,32 @@ public  class Product {
 	 * @param info
 	 */
 	
-	public Product(String model, String maker, double price,String info) {
+	public Product(String model, String maker, double price, String info, int quantity) {
 		
 		this.model = model;
 		this.maker = maker;
-		this.price = price;
+		if (price > 0) {
+			this.price = price;
+		} else {
+			try {
+				throw new InvalidPriceException("Invalid input value for " + this.maker + " " + this.model + " price.");
+			} catch (InvalidPriceException e) {
+				System.out.println(e.getMessage());
+			}
+		}
+		
+		
 		this.info = info;  
-		this.quantity = quantity;
+		if (quantity > 0) {
+				this.quantity = quantity;
+	
+		} else {
+			try {
+				throw new InvalidQuantityValueException ("Invalid input value for " + this.maker + " " + this.model + " quantity.");
+			} catch (InvalidQuantityValueException e) {
+				System.out.println(e.getMessage());
+			}
+		}
 	
 	}
 
@@ -86,6 +108,9 @@ public  class Product {
 			throw new IOException("Not Enough in Stock"); 
 		}
 	}
+
+	
+	
 
 	public void printDetails() {
 		System.out.println("Model: " +model);

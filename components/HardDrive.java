@@ -13,8 +13,8 @@ public class HardDrive extends Product{
 	 * @param size
 	 * @param capacity
 	 */
-	public HardDrive(String model, String maker, double price, String info,String type, int size, int capacity) {
-		super(model, maker, price, info);
+	public HardDrive(String model, String maker, double price, String info,String type, int size, int capacity, int quantity) {
+		super(model, maker, price, info, quantity);
 		this.size = size;
 		this.capacity = capacity;
 		this.type = type;

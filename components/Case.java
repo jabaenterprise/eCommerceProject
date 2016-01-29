@@ -12,8 +12,8 @@ public class Case extends Product{
 	 * @param type
 	 * @param size
 	 */
-	public Case(String model, String maker, double price, String info,String type,String size) {
-		super(model, maker, price, info);
+	public Case(String model, String maker, double price, String info,String type,String size, int quantity) {
+		super(model, maker, price, info, quantity);
 		this.type = type;
 		this.size = size;
 		super.setAvailable(true);
