@@ -17,7 +17,7 @@ public class ClientFactory extends DataBase{
 		
 		for(int i = 0; i < clients.size();i++){
 			if(email.equals(clients.get(i).geteMail())){
-				System.out.println("this client is already in the system ");
+				System.out.println("this client is already in the system.");
 				return null;
 			}
 		}

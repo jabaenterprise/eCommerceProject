@@ -202,6 +202,27 @@ public class Inventory {
 			
 		}
 
-		
+		//Sort product category by Maker:
+		public void sortProductTypeByMaker(String component) throws Exception {
+			int select = Inventory.chooseComponent(component);
+			if (select!=-1){
+				
+				Collections.sort(this.products.get(select), new Comparator<Product>() {
+
+					@Override
+					public int compare(Product p1, Product p2) {
+
+						return p1.getMaker().compareTo(p2.getMaker());
+					}
+					
+				});
+				printByComponent(component);
+			}
+			else
+			{
+				System.out.println("Input not recognised");
+			}
+			
+		}
 		
 }
