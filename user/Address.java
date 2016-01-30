@@ -23,6 +23,24 @@ public class Address {
 		this.postalCode = postalCode;
 		this.telephoneNumber = telephoneNumber;
 	}
+	protected String getContactName() {
+		return contactName;
+	}
+	protected String getCity() {
+		return city;
+	}
+	protected String getAddressLine1() {
+		return addressLine1;
+	}
+	protected String getAddressLine2() {
+		return addressLine2;
+	}
+	protected String getPostalCode() {
+		return postalCode;
+	}
+	protected String getTelephoneNumber() {
+		return telephoneNumber;
+	}
 	
 	
 

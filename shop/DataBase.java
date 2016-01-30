@@ -7,13 +7,23 @@ import user.Client;
 
 
 public class DataBase {
-	private static Inventory inventory = new Inventory();
-	protected static ArrayList<Client> clients  = new ArrayList<Client>();
+	
+	//Fields:
+	private Inventory inventory;
+	protected static ArrayList<Client> clients;
 	private Admin admin;
 	
 	
+	//Constructor:
+	public DataBase() {
+		this.inventory = new Inventory();
+		DataBase.clients  = new ArrayList<Client>();
+	}
 	
-	
+	protected void setClients(ArrayList<Client> clients) {
+		DataBase.clients = clients;
+	}
+
 	public Inventory getInventory() {
 		return inventory;
 	}
@@ -27,8 +37,8 @@ public class DataBase {
 		
 	}
 
-	public ArrayList<Client> getClients() {
-		return clients;
+	public static ArrayList<Client> getClients() {
+		return DataBase.clients;
 	}
 	
 	

@@ -1,29 +1,34 @@
 package user;
 
-import java.util.Scanner;
-
 import components.Product;
-
 import exceptions.NotEnoughInStockException;
 
 public class Client {
 	
+	//Fields:
 	private String eMail;
 	private String password;
 	private Address address;
 	private String name;
-//	private boolean isLoggedIn = false;
-	Cart cart = new Cart();
+	private Cart cart;
 	/**
 	 * @param eMail
 	 * @param password
 	 * @param name
 	 */
+	
+	
+	//Constructor: 
 	public Client(String eMail, String password, String name) {
 		this.eMail = eMail;
 		this.password = password;
 		this.name = name;
+		this.cart = new Cart();
+		this.cart.setUser(this);
 	}
+	
+	
+	//Getters and setters:
 	public String geteMail() {
 		return eMail;
 	}
@@ -48,11 +53,13 @@ public class Client {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
 	public Cart getCart() {
 		return cart;
 	}
 	
+	
+
+	//Methods:
 	void addProductToCart(Product p, int amount){
 		try {
 			cart.addProduct(p, amount);
@@ -68,7 +75,7 @@ public class Client {
 	void buyProducts(){
 	//some sort of confirmation for correct address or if the user would like to change the address 
 			if(address!=null)
-				System.out.println("The amount you need to pay is: "+cart.calculateCost());
+				System.out.println("The amount you need to pay is: " + cart.calculateCost());
 			else{
 				System.out.println("you need to enter an address");
 			}

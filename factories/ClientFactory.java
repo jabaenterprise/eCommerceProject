@@ -1,18 +1,13 @@
 package factories;
 
-import java.util.ArrayList;
-
-import javax.xml.crypto.Data;
-
 import shop.DataBase;
 import user.Client;
+
 
 public class ClientFactory extends DataBase{
 	private static final int MIN_PASSWORD_LENGTH = 4;
 	
-	public ClientFactory(){
-		
-	}
+	
 	
 	public static Client createClient(String name, String password, String email){
 		

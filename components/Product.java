@@ -1,11 +1,11 @@
 package components;
 
-import java.io.IOException;
-
 import exceptions.InvalidPriceException;
 import exceptions.InvalidQuantityValueException;
 
 public  class Product {
+	
+	//Fields:
 	private String model;
 	private String maker;
 	private double price;
@@ -19,8 +19,8 @@ public  class Product {
 	 * @param info
 	 */
 	
+	//Constructor:
 	public Product(String model, String maker, double price, String info, int quantity) {
-		
 		this.model = model;
 		this.maker = maker;
 		if (price > 0) {
@@ -32,7 +32,6 @@ public  class Product {
 				System.out.println(e.getMessage());
 			}
 		}
-		
 		
 		this.info = info;  
 		if (quantity > 0) {
@@ -47,7 +46,36 @@ public  class Product {
 		}
 	
 	}
+	
+	
+	//Overrides of hashCode() and equals() concerning the HashMap in Cart class:
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((model == null) ? 0 : model.hashCode());
+		return result;
+	}
 
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Product other = (Product) obj;
+		if (model == null) {
+			if (other.model != null)
+				return false;
+		} else if (!model.equals(other.model))
+			return false;
+		return true;
+	}
+
+
+	//Getters and Setters:
 	public boolean isAvailable() {
 		return isAvailable;
 	}
@@ -92,7 +120,7 @@ public  class Product {
 		return quantity;
 	}
 
-	public void setQuantity(int quantity) throws IOException {
+	public void setQuantity(int quantity) throws InvalidQuantityValueException {
 		if(quantity>0){
 			this.quantity = quantity;
 			isAvailable = true;
@@ -106,13 +134,15 @@ public  class Product {
 			return;
 		}
 		if(quantity<0){
-			throw new IOException("Not Enough in Stock"); 
+			
+				throw new InvalidQuantityValueException ("Invalid input value for " + this.maker + " " + this.model + " quantity.");
+			
 		}
 	}
 
 	
 	
-
+	//Methods:
 	public void printDetails() {
 		System.out.println("Model: " +model);
 		System.out.println("Maker: " +maker);

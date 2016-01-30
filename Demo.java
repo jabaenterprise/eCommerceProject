@@ -16,7 +16,7 @@ public class Demo {
 
 	public static void main(String[] args) {
 		DataBase dataBase = new DataBase();
-		dataBase.getInventory().generateArray();
+		
 		
 		Case case1= new Case("x2", "alianWare", 125, "the best there is", "midTower", "45\"", -1);
 		Case case2= new Case("x1", "alianWare", -200, "the best there is", "midTower", "50\"", 4);
@@ -63,29 +63,29 @@ public class Demo {
 	System.out.println("----------------------------");
 		
 		
-		dataBase.getClients().add(ClientFactory.createClient("Gosho", "A123a", "itt@itt.com"));
-		dataBase.getClients().add(ClientFactory.createClient("Gosho", "A123a", "itt@itt.com"));
-		dataBase.getClients().add(ClientFactory.createClient("Gosho1", "A123a", "itt@itt1.com"));
+		DataBase.getClients().add(ClientFactory.createClient("Gosho", "A123a", "itt@itt.com"));
+		DataBase.getClients().add(ClientFactory.createClient("Gosho", "A123a", "itt@itt.com"));
+		DataBase.getClients().add(ClientFactory.createClient("Gosho1", "A123a", "itt@itt1.com"));
 		
 		try {
-			dataBase.getClients().get(0).getCart().addProduct(gpu2, 1);
+			DataBase.getClients().get(0).getCart().addProduct(gpu2, 1);
 		} catch (NotEnoughInStockException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		try {
-			dataBase.getClients().get(0).getCart().addProduct(monitor2, 1);
+			DataBase.getClients().get(0).getCart().addProduct(monitor2, 1);
 		} catch (NotEnoughInStockException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		System.out.println("----------------------------");
-		dataBase.getClients().get(0).getCart().printCart();
+		DataBase.getClients().get(0).getCart().printCart();
 		System.out.println("----------------------------");
 		dataBase.getInventory().printAllContent();
 		//Admin testing
 		dataBase.setAdmin(AdminFactory.createAdmin("admin@itt.com", "B123Ds"));
-		dataBase.getAdmin().removeUser(dataBase.getClients(), new Client("itt@itt1.com", "A123a", "Gosho1"));
+		dataBase.getAdmin().removeUser(DataBase.getClients(), new Client("itt@itt1.com", "A123a", "Gosho1"));
 		dataBase.getAdmin().addProduct(dataBase.getInventory(), new RAM("AX23792002","Axiom", 50, "Axiom has designed and engineered this module to set that standard.", "DDR3",4, 5));
 		dataBase.getAdmin().changeProductQuantity(dataBase.getInventory(), new RAM("AX23792002","Axiom", 50, "Axiom has designed and engineered this module to set that standard.", "DDR3",4, 5), 10);
 		

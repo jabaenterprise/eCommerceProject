@@ -2,10 +2,11 @@ package components;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.List; 
+import java.util.List;
+
+import exceptions.InvalidQuantityValueException; 
 
 public class Inventory {
 
@@ -17,10 +18,15 @@ public class Inventory {
 		private static final int MOTHERBOARD = 5;
 		private static final int RAM = 6;
 
-		private ArrayList<ArrayList<Product>> products = new ArrayList<ArrayList<Product>>();
+		private ArrayList<ArrayList<Product>> products;
 
+		public Inventory() {
+			this.products = new ArrayList<ArrayList<Product>>();
+			generateArray();
+		}
 		
-		public void generateArray(){
+		
+		private void generateArray(){
 			
 			for(int i=0; i<RAM+1;i++){
 				products.add(new ArrayList<Product>());
@@ -39,21 +45,23 @@ public class Inventory {
 			
 			for(int i = 0; i < products.get(select).size();i++){
 				if (( products.get(select).get(i)).getModel().equals(p.getModel())){
-					try {
-						( products.get(select).get(i)).setQuantity((products.get(select).get(i)).getQuantity()+amount);
-					} catch (IOException e) {
-						System.out.println("smth wrong-------------------------------------------------");
-						e.printStackTrace();
-					}
+					
+						try {
+							( products.get(select).get(i)).setQuantity((products.get(select).get(i)).getQuantity()+amount);
+						} catch (InvalidQuantityValueException e) {
+							System.out.println(e.getMessage());
+						}
+					
 					return;
 				}
 			}
-			try {
-				p.setQuantity(amount);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			
+				try {
+					p.setQuantity(amount);
+				} catch (InvalidQuantityValueException e) {
+					System.out.println(e.getMessage());
+				}
+			
 			products.get(select).add(p);
 			
 			
@@ -89,6 +97,7 @@ public class Inventory {
 			
 			
 		}
+		
 		public void printAllContent() {
 			for(int i = 0;i<products.size();i++){
 				for (int j = 0; j<products.get(i).size();j++){
@@ -235,5 +244,6 @@ public class Inventory {
 		public List<Product> getProductList(Product p){
 			return products.get(findProductType(p));
 		}
+	
 		
 }
